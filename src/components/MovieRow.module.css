@@ -1,0 +1,68 @@
+.section {
+  padding: 0 0 3vw;
+  position: relative;
+}
+.rowTitle {
+  font-size: clamp(0.9rem, 1.4vw, 1.2rem);
+  font-weight: 700;
+  color: #e5e5e5;
+  padding: 0 4%;
+  margin-bottom: 0.6em;
+  letter-spacing: 0.3px;
+}
+
+.sliderWrap {
+  position: relative;
+}
+.sliderWrap:hover .handle { opacity: 1; }
+
+.row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 8%) / 6);
+  column-gap: 4px;
+  padding: 0.5rem 4%;
+  overflow-x: scroll;
+  overflow-y: visible;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+.row::-webkit-scrollbar { display: none; }
+.row > * { scroll-snap-align: start; }
+
+.handle {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 4%;
+  min-width: 40px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20,20,20,0.5);
+  opacity: 0;
+  transition: opacity 0.2s, background 0.2s;
+  border-radius: 4px;
+}
+.handle:hover { background: rgba(20,20,20,0.9); }
+.handleLeft { left: 0; border-radius: 0 4px 4px 0; }
+.handleRight { right: 0; border-radius: 4px 0 0 4px; }
+
+.skeletonCard {
+  aspect-ratio: 16/9;
+  border-radius: 4px;
+  min-width: 0;
+}
+
+@media (max-width: 1200px) {
+  .row { grid-auto-columns: calc((100% - 8%) / 5); }
+}
+@media (max-width: 900px) {
+  .row { grid-auto-columns: calc((100% - 8%) / 4); }
+}
+@media (max-width: 600px) {
+  .row { grid-auto-columns: calc((100% - 8%) / 3); }
+}
+@media (max-width: 400px) {
+  .row { grid-auto-columns: calc((100% - 8%) / 2.2); }
+}
